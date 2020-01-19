@@ -12,16 +12,16 @@ import java.util.stream.Collectors;
 public class DoubleLinear {
 
 	public static int dblLinear(int n) {
-
+		System.out.println("n is: "+n);
 		List<Integer> uList = new ArrayList<Integer>();
 		uList.add(1);
 		getUList(uList, 1, n);
 		uList = Arrays.stream(uList.toArray()).distinct().mapToInt(x->(Integer)x).boxed().collect(Collectors.toList());
 		Collections.sort(uList);
-		Iterator<Integer> iter = uList.iterator();
-		while(iter.hasNext()) {
-			System.out.println("Integer: "+iter.next());
-		}
+//		Iterator<Integer> iter = uList.iterator();
+//		while(iter.hasNext()) {
+//			System.out.println("Integer: "+iter.next());
+//		}
 		return uList.get(n);
 	}
 
@@ -30,9 +30,9 @@ public class DoubleLinear {
 		int z = 3*lastInt + 1;
 		uList.add(y);
 		uList.add(z);
-		if(y<1000 || z < 1000) {
-			getUList(uList, z, n);
+		if(y<n*60 || z < n*90) {
 			getUList(uList, y, n);
+			getUList(uList, z, n);
 		}
 		
 	}
