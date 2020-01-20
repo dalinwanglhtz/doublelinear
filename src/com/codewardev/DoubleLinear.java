@@ -3,7 +3,6 @@ package com.codewardev;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,28 +10,27 @@ import java.util.stream.Collectors;
 
 public class DoubleLinear {
 
+	private static final int yMAX = 13;
+	private static final int zMAX = 12;
+	
 	public static int dblLinear(int n) {
-		System.out.println("n is: "+n);
 		List<Integer> uList = new ArrayList<Integer>();
 		uList.add(1);
-		getUList(uList, 1, n);
+		updateUList(uList, 1, n);
 		uList = Arrays.stream(uList.toArray()).distinct().mapToInt(x->(Integer)x).boxed().collect(Collectors.toList());
 		Collections.sort(uList);
-//		Iterator<Integer> iter = uList.iterator();
-//		while(iter.hasNext()) {
-//			System.out.println("Integer: "+iter.next());
-//		}
+
 		return uList.get(n);
 	}
 
-	private static void getUList(List<Integer> uList, int lastInt, int n) {
+	private static void updateUList(List<Integer> uList, int lastInt, int n) {
 		int y = 2*lastInt + 1;
 		int z = 3*lastInt + 1;
 		uList.add(y);
 		uList.add(z);
-		if(y<n*60 || z < n*90) {
-			getUList(uList, y, n);
-			getUList(uList, z, n);
+		if(y<n*yMAX || z < n*zMAX) {
+			updateUList(uList, y, n);
+			updateUList(uList, z, n);
 		}
 		
 	}
