@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class DoubleLinear {
 
-	private static final int yMAX = 13;
-	private static final int zMAX = 12;
+	private static final int yMAX = 13; // The higher the number the more time it takes
+	private static final int zMAX = 12; // The higher the number the more time it takes
 	
 	public static int dblLinear(int n) {
 		List<Integer> uList = new ArrayList<Integer>();
